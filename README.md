@@ -14,4 +14,32 @@
     - Write an API that provides access to the content in the mongo database.
     - Bonus: The user should be able to search the articles' text by keyword.
 
-    $ pip freeze > requirements.txt
+    + Setup Environment & Run the WebCrawler :
+      % `bbc.com` -> the news website used in this web application
+
+    % Initialize Virtual Environment :
+
+    $ virtualenv -p python3 venv
+	$ source ./venv/bin/activate
+	$ pip install -r requirements.txt
+
+    % Test All Endpoints :
+
+    $ export environment=testing
+	$ python tests.py
+
+    % Launch the web app :
+
+    $ source ./venv/bin/activate
+	$ export FLASK_APP=manage.py
+	$ flask run
+
+    % Endpoints Description :
+
+    $ Post http://127.0.0.1:5000/crawler/articles/bbc.com                   | Scrape All Articles in the `bbc.com` website and save them in the database.
+    $ Post http://127.0.0.1:5000/crawler/article/world-africa-53040513      | Scrape The Article in this url : `https://www.bbc.com/news/world-africa-53040513` and save the content in the database.
+    $ Get http://127.0.0.1:5000/crawler/articles/bbc.com                    | Scrape All Articles in the `bbc.com` website, and get the contents in json format.
+    $ Get http://127.0.0.1:5000/crawler/article/world-africa-53040513       | Scrape The Article in this url : `https://www.bbc.com/news/world-africa-53040513`,  and get the content in json format.
+    $ Get http://127.0.0.1:5000/articles/                                   | Fetch all Articles From database
+    $ Get http://127.0.0.1:5000/articles/usa                                | Fetch All Articles That Contains the keyword `usa`
+
