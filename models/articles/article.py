@@ -2,7 +2,9 @@ import uuid
 
 import requests
 from bs4 import BeautifulSoup
-
+from utils.commons import Utils
+from utils.database import Database as db
+import models.articles.constants as ArticleConstants
 
 
 class Article(object):
@@ -53,11 +55,27 @@ class Article(object):
         return tags
 
     @staticmethod
+    def load_date(soup):
+        sec_date = soup.find("div", {"class": "date date--v2"})
+        return Utils.sec_to_date(int(sec_date["data-seconds"]))
+
+    @staticmethod
     def load_author(soup):
         author = soup.find("span", {"class": "byline__name"})
         if author is not None:
             return author.text[3:]
         return ""
+
+    @classmethod
+    def SearchByKeyword(cls, keyword):
+        return [cls(**article) for article in db.find(ArticleConstants.Collection, {"text": {"$regex": f"{keyword}"}})]
+
+    @classmethod
+    def FetchAllArticles(cls):
+        return [cls(**article_data) for article_data in db.find(ArticleConstants.Collection, {})]
+
+    def save_database(self):
+        db.insert(ArticleConstants.Collection, self.json())
 
     def json(self):
         return {
