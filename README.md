@@ -13,3 +13,5 @@
     - Store the data in a hosted Mongo database, e.g. MongoDB Atlas, for subsequent search and retrieval. Ensure the URL of the article is included to enable comparison to the original.
     - Write an API that provides access to the content in the mongo database.
     - Bonus: The user should be able to search the articles' text by keyword.
+
+    $ pip freeze > requirements.txt
