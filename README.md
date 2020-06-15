@@ -15,7 +15,7 @@
     - Bonus: The user should be able to search the articles' text by keyword.
 
     + Setup Environment & Run the WebCrawler :
-      % `bbc.com` -> the news website used in this web application
+      % `www.bbc.com` -> the news website used in this web application
 
     % Initialize Virtual Environment :
 
@@ -40,6 +40,6 @@
     $ Post http://127.0.0.1:5000/crawler/article/world-africa-53040513      | Scrape The Article in this url : `https://www.bbc.com/news/world-africa-53040513` and save the content in the database.
     $ Get http://127.0.0.1:5000/crawler/articles/bbc.com                    | Scrape All Articles in the `bbc.com` website, and get the contents in json format.
     $ Get http://127.0.0.1:5000/crawler/article/world-africa-53040513       | Scrape The Article in this url : `https://www.bbc.com/news/world-africa-53040513`,  and get the content in json format.
-    $ Get http://127.0.0.1:5000/articles/                                   | Fetch all Articles From database
-    $ Get http://127.0.0.1:5000/articles/usa                                | Fetch All Articles That Contains the keyword `usa`
+    $ Get http://127.0.0.1:5000/articles/                                   | Fetch all Articles From database, and get them in json format.
+    $ Get http://127.0.0.1:5000/articles/usa                                | Fetch All Articles That Contains the keyword `usa` from database, and get them in json format.
 
