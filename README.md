@@ -25,6 +25,13 @@
 	$ source ./venv/bin/activate
 	$ pip install -r requirements.txt
 
+    $ touch .env
+
+    -> paste this two variables
+
+         MONGODB_HOST_DEV=mongodb+srv://mongodb:data-engineering123@de-cluster-cgltu.mongodb.net/newsdb?retryWrites=true&w=majority
+         MONGODB_HOST_TEST=mongodb+srv://mongodb:data-engineering123@de-cluster-cgltu.mongodb.net/newsdb-test?retryWrites=true&w=majority
+
     % Test All Endpoints :
 
     $ export environment=testing
